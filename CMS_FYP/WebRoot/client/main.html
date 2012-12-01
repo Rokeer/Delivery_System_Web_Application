@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Factorial Information System - Client</title>
+        <link rel="stylesheet" type="text/css" href="../js/themes/gray/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../js/themes/icon.css">
+		<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="../js/ChineseCalendar.js"></script>
+		<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="../js/locale/easyui-lang-en.js"></script>
+		<style type="text/css">
+		a{text-decoration:none;color:black;}
+		body{background-color:#DDD;}
+		</style>
+        <script>
+        $(function(){
+         var _tabPanel=$("#main");
+         freshAD();
+         $(".easyui-accordion").find("a[link]").each(function(){
+                    $(this).click(function(){
+                        var url=$(this).attr("link");
+                        var title=$(this).html();
+				        if(url!=="#"&&url!==""){
+					            if(!_tabPanel.tabs('exists',title)){
+							        _tabPanel.tabs('add',{
+							                               title:title,
+							                               content:'<iframe src="'+url+'" style="padding:0;margin:0;border:0;width:100%;height:100%;"></iframe>',
+							                               closable:true});
+							        bindfresh(title);
+						        }else{
+							        _tabPanel.tabs('select',title);
+						        }
+					        }
+				        });
+                    });//end each
+	   window.document.addTab=function(url,title){
+	    var _tabPanel=$("#main");
+	    if(!_tabPanel.tabs('exists',title)){
+	    _tabPanel.tabs('add',{
+				title:title,
+				content:'<iframe src="'+url+'" style="padding:0;margin:0;border:0;width:100%;height:100%;"></iframe>',
+				closable:true});
+		bindfresh(title);
+	    }else{
+		_tabPanel.tabs('select',title);
+	    }
+            }//end window.document.addTab
+        
+        });//end ready
+        function freshAD(){
+        var AdHtml="<font color='red'>Time: "+new Date().format("hh:mm:ss")+"&nbsp;&nbsp;Date: "+new Date().format("MM-dd-yyyy")+"</font>";
+        $("#opt_info").panel({title:AdHtml});
+        setTimeout("freshAD()",500);
+        }
+        function goHome(){$("#main").tabs('select',"后台首页");}
+        function wopen(url){window.open (url,'newwindow','height=800,width=1100,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no')}
+        function bindfresh(title){
+        /*双击刷新TAB选项卡*/
+	    $(".tabs-inner").dblclick(function(){
+	        var _ctab=$('#main').tabs('getTab',title);
+	        var html=_ctab.html();
+	        _ctab.html(html);
+	    });//end $(".tabs-inner").dblclick
+        }
+</script>
+</head>
+<body class="easyui-layout" style="text-align:left">
+<div region="north" style="height:52px;">
+	<div class="easyui-layout" style="height:50px;">
+		<div region="west" id="logo" style="height:48px;width:207px;background:#eee;padding:0;margin:0;" >
+		<img style="height:48px;width:203px;padding:0;margin:0;border:0;"  src="../images/logo.png"/>
+		</div>
+		<div  region="center" style="height:48px;padding:0;margin:0;"  border="false" >
+		    <div  region="center1" style="float:left;height:48px;width:391px;padding:0;margin:0;background:transparent url(../images/banner.png);"  border="false" ></div>
+		    <div  region="center2" style="height:48px;padding:0;margin:0;background:transparent url(../images/1px.jpg) repeat-x;"  border="false" >		    
+		    <a href="../" onclick="if(!confirm('Are you sure?')){return false;}" style="float:right;" class="easyui-linkbutton" plain="true" icon="icon-undo" >Logout</a>
+		    </div>
+		</div>
+	</div>
+</div>
+			
+		    <div region="west" split="false" icon="icon-info" title="Admin Menu" style="width:208px;" >
+					    <div class="easyui-accordion"  border="false">
+						    <div title="Business Management" iconCls="icon-light" selected="true" style="overflow:auto;padding:10px;">
+						    <ul class="easyui-tree">
+				                <li><span><a link="transactions.html">My Orders</a></span></li>
+						    </ul>
+						    </div>
+						    <div title="Mailbox" iconCls="icon-folder" style="padding:10px;">
+						    <ul class="easyui-tree">
+						        <li><span><a link="../mail/new.html">New Mail</a></span></li>
+				                <li><span><a link="../mail/inbox.html">Inbox</a></span></li>
+				                <li><span><a link="../mail/sent.html">Sent</a></span></li>
+						    </ul>
+						    </div>
+						</div>
+	    </div>
+		    
+	   <div id="opt_info" border="false" region="center" title="小广告" >
+			     <div id="main" class="easyui-tabs"  fit="true" border="false" plain="true">
+					    <div title="Index" style="padding:10px;">
+					      <img style="height:413px;width:669px;padding:0;margin:0;border:0;"  src="../images/main.jpg"/>
+					    </div>
+			     </div>
+		</div>
+	   <div  region="south" style="text-align:center" >
+Factorial Information System By Seven
+		</div>
+</body>
+</html>

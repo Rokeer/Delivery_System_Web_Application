@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Bids</title>
+	
+   <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../js/themes/gray/easyui.css">  
+    <link rel="stylesheet" type="text/css" href="../js/themes/icon.css">  
+    <script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>  
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>  
+    <script type="text/javascript" src="js/bids.js"></script> 
+
+  </head>
+  
+  <body>
+    <table id="mainTable"></table> 
+    
+    <div id="BidDialog" style="width:300px;height:200px;">  
+    		<form id="addForm" name="addForm" method="post">  
+    			<div align = "center">
+    			<p></p>
+    			<div id="MDetail">String</div>
+    			</div>
+    			<p></p>
+				<div align="center">
+	            	<label for="sbBid" >Price:</label>
+	            	<input class="easyui-validatebox" type="text" name="addSBPrice" required="true"></input>
+	            	<input type="hidden" id="addMOId" name="addMOId" />
+	        	</div>
+	        	<p></p>
+	        	<div style="padding:5px;text-align:center;">
+            		<a href="#" class="easyui-linkbutton" icon="icon-ok" onclick="submitAddForm()">Add</a>
+            		<a href="#" class="easyui-linkbutton" icon="icon-cancel" onclick="document.addForm.reset()">Reset</a>
+        		</div>
+			</form> 
+		</div>
+    
+  </body>
+</html>

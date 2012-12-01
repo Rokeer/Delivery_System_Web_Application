@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>  
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+        <title>New Mail</title>   
+        <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">  
+        <meta http-equiv="description" content="this is my page">  
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">    
+        <link rel="stylesheet" type="text/css" href="../js/themes/gray/easyui.css">  
+        <link rel="stylesheet" type="text/css" href="../js/themes/icon.css">  
+            <script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>  
+        <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>  
+        <script type="text/javascript" src="js/new.js"></script>  
+      </head>
+  
+  <body>
+    <form id="newForm" name="newForm" method="post">  
+    			<div>
+    			<p></p>
+    			<font size="5">New Mail</font>
+    			</div>
+    			<p></p>
+				<div>
+	            	<label for="mbTo" >To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+	            	<input class="easyui-validatebox" type="text" id="mbTo" name="mbTo" required="true"></input>
+	        	</div>
+	        	<p></p>
+	        	<div>
+	            	<label for="mbTitle">Title&nbsp;&nbsp;:</label>
+	            	<input class="easyui-validatebox" type="text" id="mbTitle" name="mbTitle"></input>
+	        	</div>
+	        	<p></p>
+	        	<div>
+	            	<label for="mbContent">Content:</label>
+	            	<textarea class="easyui-validatebox" id="mbContent" name="mbContent"></textarea>
+	        	</div>
+	        	<p></p>
+	        	<div style="padding:5px;text-align:left;">
+            		<a href="#" class="easyui-linkbutton" icon="icon-ok" onclick="submitNewForm()">Send</a>
+            		<a href="#" class="easyui-linkbutton" icon="icon-cancel" onclick="document.newForm.reset()">Reset</a>
+        		</div>
+	</form> 
+  </body>
+</html>

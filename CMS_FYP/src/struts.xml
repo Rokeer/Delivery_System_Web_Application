@@ -1,0 +1,199 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="userLogin" class="interceptor.LoginCheck"/>
+		</interceptors>
+		
+		<action name="login" class="action.LoginAction">
+			<result name="login" type="redirect">/index.html?error=The username or password you provided does not match our records.</result>
+			<result name="manager" type="redirect">/manager/main.html</result>
+			<result name="client" type="redirect">/client/main.html</result>
+			<result name="supplier" type="redirect">/supplier/main.html</result>
+		</action>
+	</package>
+	
+	
+	<package name="json" extends="json-default">
+	
+	<!-- MaterialAction 开始 -->
+	<action name="getMaterialsListWithoutPage" class="action.MaterialAction" method="getMaterialsListWithoutPage">  
+        <result name="success" type="json">
+			<param name="root">resultAry</param>
+		</result>  
+    </action>
+	
+    <action name="getMaterialsList" class="action.MaterialAction" method="getMaterialList">  
+        <result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>  
+    </action>
+    
+    <action name="addMaterial" class="action.MaterialAction" method="addMaterial">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="editMaterial" class="action.MaterialAction" method="editMaterial">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="delMaterial" class="action.MaterialAction" method="delMaterial">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<!-- ProductAction 开始 -->
+	<action name="getProductsList" class="action.ProductAction" method="getProductsList">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="getProductsListWithoutPage" class="action.ProductAction" method="getProductsListWithoutPage">
+		<result name="success" type="json">
+			<param name="root">resultAry</param>
+		</result>
+	</action>
+	
+	<action name="delProduct" class="action.ProductAction" method="delProduct">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<!-- CMTransactionAction 开始 -->
+	<action name="getCMTransactionsList" class="action.CMTransactionAction" method="getCMTransactionsList">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="getCMTransactionsListByUser" class="action.CMTransactionAction" method="getCMTransactionsListByUser">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="addCMTransaction" class="action.CMTransactionAction" method="addCMTransaction">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="editCMTransaction" class="action.CMTransactionAction" method="editCMTransaction">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="delCMTransaction" class="action.CMTransactionAction" method="delCMTransaction">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="editCMTransactionStatus" class="action.CMTransactionAction" method="editCMTransactionStatus">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<!-- MOrderAction 开始 -->
+	<action name="getMOrdersList" class="action.MOrderAction" method="getMOrdersList">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="getMOrdersListWithoutSelection" class="action.MOrderAction" method="getMOrdersListWithoutSelection">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="addMOrder" class="action.MOrderAction" method="addMOrder">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="delMOrder" class="action.MOrderAction" method="delMOrder">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<!-- SBidAction 开始 -->
+	<action name="getSBidListByMOId" class="action.SBidAction" method="getSBidListByMOId">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="acceptBid" class="action.SBidAction" method="acceptBid">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="addBid" class="action.SBidAction" method="addBid">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="getSBidListByPageAndSupplier" class="action.SBidAction" method="getSBidListByPageAndSupplier">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+		<action name="delBid" class="action.SBidAction" method="delBid">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	
+	<!-- MailboxAction 开始 -->
+	<action name="getInboxList" class="action.MailboxAction" method="getInboxList">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="openMailbox" class="action.MailboxAction" method="openMailbox">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="getMailboxContent" class="action.MailboxAction" method="getMailboxContent">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="getSentList" class="action.MailboxAction" method="getSentList">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+	<action name="sendMail" class="action.MailboxAction" method="sendMail">
+		<result name="success" type="json">
+			<param name="root">resultObj</param>
+		</result>
+	</action>
+	
+    </package> 
+</struts>
